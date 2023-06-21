@@ -19,8 +19,15 @@ pipeline {
                      git branch: 'main', url: 'https://github.com/AyoushmanGemini/Intern_assign1.git'
                      sh 'docker build . -t react-pro'
                      echo "docker build successful"
-                   sh 'docker login -u admin -p Zeuskiller1@ http://localhost:8082/repository/dockerhosted-repo-react/'
-sh 'docker push http://localhost:8082/repository/dockerhosted-repo-react/react-pro}'
+//                    sh 'docker login -u admin -p Zeuskiller1@ http://localhost:8082/repository/dockerhosted-repo-react/'
+// sh 'docker push http://localhost:8082/repository/dockerhosted-repo-react/react-pro}'
+
+withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]){
+        sh "echo ${PSW} | docker login -u ${USER} --password-stdin http://localhost:8082/"
+        sh "docker push http://localhost:8082/react-pro:${BUILD_NUMBER}"
+    }
+
+
     }
 
                }
