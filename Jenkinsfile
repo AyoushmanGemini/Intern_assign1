@@ -21,7 +21,7 @@ pipeline {
                      echo "docker build successful"
                      sh 'docker login http://localhost:8081/repository/dockerhosted-repo-react/ -u jenkins-user -p Zeuskiller1@'
                      echo "Above command ran ssuccessfully"
-                     sh 'docker push http://localhost:8081/repository/dockerhosted-repo-react/react-pro
+                     sh 'docker push http://localhost:8081/repository/dockerhosted-repo-react/react-pro'
 
                }
             }
