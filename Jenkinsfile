@@ -30,4 +30,4 @@ sh 'docker push http://localhost:8081/repository/dockerhosted-repo-react/react-p
        
     
     }   
-}
+
