@@ -24,7 +24,8 @@ pipeline {
 
 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]){
         sh "echo ${PSW} | docker login -u ${USER} --password-stdin http://localhost:8082/"
-        sh "docker push http://localhost:8082/repository/dockerhosted-repo./react-pro:${BUILD_NUMBER}"
+        // sh "docker push http://localhost:8082/repository/dockerhosted-repo./react-pro:${BUILD_NUMBER}"
+        echo "Login successful"
     }
 
 
