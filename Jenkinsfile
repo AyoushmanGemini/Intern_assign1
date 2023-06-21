@@ -20,6 +20,8 @@ pipeline {
                 script {
                      echo "building the application 2"
                      git branch: 'main', url: 'https://github.com/AyoushmanGemini/Intern_assign1.git'
+                     docker build . -t react-pro
+                     echo "docker build successful"
                 }
             }
         }
