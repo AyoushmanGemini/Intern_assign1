@@ -26,7 +26,7 @@ withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW
         sh "echo ${PSW} | docker login -u ${USER} --password-stdin http://localhost:8082/"
         
         echo "Login successful"
-         sh "docker push http://localhost:8082/reactpro"
+         sh "docker push http://localhost:8082/repository/dockerhosted-repo/reactpro"
     }
 
 
