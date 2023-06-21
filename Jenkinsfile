@@ -20,14 +20,15 @@ pipeline {
                      sh 'docker build . -t reactpro'
                      echo "docker build successful"
 //                    sh 'docker login -u admin -p Zeuskiller1@ http://localhost:8082/repository/dockerhosted-repo-react/'
-// sh 'docker push http://localhost:8082/repository/dockerhosted-repo-react/react-pro}'
+// }'
 
 withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]){
         sh "echo ${PSW} | docker login -u ${USER} --password-stdin http://localhost:8082/"
         
         echo "Login successful"
-         sh "docker push localhost:8082/repository/dockerhosted-repo/reactpro:${BUILD_NUMBER}"
+        //  sh "docker push localhost:8082/repository/dockerhosted-repo/reactpro:${BUILD_NUMBER}"
     }
+    sh 'docker push http://localhost:8082/repository/dockerhosted-repo/reactpro'
 
 
     }
