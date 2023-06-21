@@ -11,6 +11,7 @@ pipeline {
             steps {
                 script {
                    echo "building the application"
+                 
                 }
             }
         }
@@ -18,6 +19,7 @@ pipeline {
             steps {
                 script {
                      echo "building the application 2"
+                     git branch: 'main', url: 'https://github.com/AyoushmanGemini/Intern_assign1.git'
                 }
             }
         }
