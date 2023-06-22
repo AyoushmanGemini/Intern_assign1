@@ -39,11 +39,7 @@
   stage('Deploying to Kubernetes') {
 
 
-                  steps {
-        script {
-          kubernetesDeploy(configs: "Deployment.yaml")
-        }
-      }
+                 sh "kubectl apply -f Deployment.yaml"
   }
   
            
