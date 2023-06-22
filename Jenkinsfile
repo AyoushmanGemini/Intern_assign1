@@ -6,7 +6,7 @@ node {
     stage("build") {
         echo "building the application 2"
         git branch: 'main', url: 'https://github.com/AyoushmanGemini/Intern_assign1.git'
-        sh 'docker build -t http://localhost:8082/react-pro:${BUILD_NUMBER} .'
+        sh 'docker build -t http://localhost:8082/sanskriti-portfolio:${BUILD_NUMBER} .'
         echo "docker build successful"
         
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]) {
