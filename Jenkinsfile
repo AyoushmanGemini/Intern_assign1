@@ -35,7 +35,10 @@
        
     }
 
-  script {
+
+  stage('Deploying to Kubernetes') {
+
+script {
             def kubeConfigId = 'mukube-config'
             def deploymentYamlPath = 'Deployment.yaml'
 
@@ -48,6 +51,10 @@
                 sh "kubectl apply -f Deployment.yaml"
             }
         }
+
+   
+  }
+  
            
             
             
