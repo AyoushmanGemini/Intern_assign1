@@ -11,7 +11,7 @@ node {
 
     stage('Building image'){
           echo "building the application 2"
-        sh 'docker build -t 192.168.36.109:8082/${imgName}:latest .'
+        sh 'docker build -t 192.168.36.109:8082/react-pro:latest .'
     }
 
     stage("login") {
@@ -28,6 +28,6 @@ node {
             
         }
                          // sh "docker tag ${imgName}:latest 192.168.36.109:8082/${imgName}:latest"
-                                                                            sh "docker push 192.168.36.109:8082/${imgName}:latest"
+                                                                            sh "docker push 192.168.36.109:8082/react-pro:latest"
     }
 }
