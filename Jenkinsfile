@@ -11,7 +11,7 @@ node {
 
     stage('Building image'){
           echo "building the application 2"
-        sh 'docker build -t https://localhost:8082/react-pro:latest .'
+        sh 'docker build -t 192.168.36.109:8082/react-pro:latest .'
     }
 
     stage("login") {
@@ -21,7 +21,7 @@ node {
         echo "docker build successful"
         
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]) {
-            sh " docker login -u admin -p admin123 http://localhost:8082/"
+            sh " docker login -u admin -p admin123 192.168.36.109:8082/"
             echo "Login successful"
            
             
