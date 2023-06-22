@@ -10,7 +10,7 @@ node {
         echo "docker build successful"
         
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]) {
-            sh "echo ${PSW} | docker login -u ${USER} --password-stdin http://localhost:8082/"
+            sh " docker login -u admin -p admin123 http://localhost:8082/"
             echo "Login successful"
             sh "docker tag react-pro:${BUILD_NUMBER} 192.168.36.109:8082/react-pro:${BUILD_NUMBER}"
             
