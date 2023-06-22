@@ -39,20 +39,11 @@
   stage('Deploying to Kubernetes') {
 
 
-            def kubeConfigId = 'mukube-config'
-           
-
-            
-            withCredentials([kubeconfigFile(credentialsId: kubeConfigId, variable: 'KUBECONFIG')]) {
-                // // Set the KUBECONFIG environment variable
-                // env.KUBECONFIG = "${env.WORKSPACE}/${KUBECONFIG}"
-                
-                // Deploy to Kubernetes
-                sh "kubectl apply -f Deployment.yaml"
-            }
-        
-
-   
+                  steps {
+        script {
+          kubernetesDeploy(configs: "Deployment.yaml")
+        }
+      }
   }
   
            
