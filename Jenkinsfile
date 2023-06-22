@@ -21,7 +21,7 @@ node {
         echo "docker build successful"
         
         
-            sh " docker login -u admin -p admin123 192.168.36.109:8082/"
+            sh " docker login -u admin -p admin123 https://192.168.36.109:8082/v2/"
             echo "Login successful"
            
             
