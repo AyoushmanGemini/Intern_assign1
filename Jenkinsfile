@@ -39,7 +39,10 @@
   stage('Deploying to Kubernetes') {
 
 
-                 sh "kubectl apply -f Deployment.yaml"
+                    withKubeConfig([credentialsId: 'mukube-config']) {
+            sh 'kubectl apply -f Deployment.yaml'
+        }
+    }
   }
   
            
