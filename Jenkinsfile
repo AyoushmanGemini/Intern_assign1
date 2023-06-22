@@ -1,4 +1,4 @@
-node {
+ "node {
     def imgName= "reactpro"
     def dockerImage = ''
     stage("init") {
@@ -27,15 +27,16 @@ node {
 
       stage("Push image") {
       
-        
+        echo "Pushing image in the nexus repositary"
                       sh "docker push 127.0.1.1:8082/react-pro:latest"
+          echo   "Image pushed successfully!!"
        
     }  
            
             
             
         
-                         // sh "docker tag ${imgName}:latest 192.168.36.109:8082/${imgName}:latest"
+                    
                                                               
     }
 }
