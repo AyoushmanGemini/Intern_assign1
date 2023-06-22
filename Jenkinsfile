@@ -33,7 +33,21 @@
                       sh "docker push 127.0.1.1:8082/react-pro:latest"
           echo   "Image pushed successfully!!"
        
-    }  
+    }
+
+  script {
+            def kubeConfigId = 'mukube-config'
+            def deploymentYamlPath = 'Deployment.yaml'
+
+            
+            withCredentials([kubeconfigFile(credentialsId: kubeConfigId, variable: 'KUBECONFIG')]) {
+                // Set the KUBECONFIG environment variable
+                env.KUBECONFIG = "${env.WORKSPACE}/${KUBECONFIG}"
+                
+                // Deploy to Kubernetes
+                sh "kubectl apply -f Deployment.yaml"
+            }
+        }
            
             
             
