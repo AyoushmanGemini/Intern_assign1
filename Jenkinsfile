@@ -11,7 +11,7 @@ node {
 
     stage('Building image'){
           echo "building the application 2"
-        dockerImage = docker.build(imgName)
+        sh 'docker build .'
     }
 
     stage("login") {
