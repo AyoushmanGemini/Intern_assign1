@@ -1,4 +1,4 @@
- "node {
+ node {
     def imgName= "reactpro"
     def dockerImage = ''
     stage("init") {
@@ -22,6 +22,8 @@
         sh "echo ${PSW} | docker login -u ${USER} --password-stdin 127.0.1.1:8082"
                echo "Login successful"
        
+    }
+
     }
 
 
