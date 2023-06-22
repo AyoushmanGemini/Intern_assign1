@@ -12,7 +12,7 @@ node {
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]) {
             sh " docker login -u admin -p admin123 http://localhost:8082/"
             echo "Login successful"
-            sh "docker tag react-pro:${BUILD_NUMBER} 192.168.36.109:8082/react-pro:${BUILD_NUMBER}"
+            sh "docker tag react-pro 192.168.36.109:8082/react-pro:${BUILD_NUMBER}"
             
             sh "docker push 192.168.36.109:8082/react-pro:${BUILD_NUMBER}"
         }
