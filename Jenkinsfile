@@ -11,7 +11,7 @@ node {
 
     stage('Building image'){
           echo "building the application 2"
-        sh 'docker build .'
+        sh 'docker build -t ${imgName} .'
     }
 
     stage("login") {
