@@ -18,11 +18,12 @@ node {
       
         
         
-        echo "docker build successful"
-        
-        
-            sh " docker login -u admin -p admin123 https://192.168.36.109:8082/"
-            echo "Login successful"
+         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]){
+        sh "echo ${PSW} | docker login -u ${USER} --password-stdin 192.168.36.109:8082"
+               echo "Login successful"
+       
+    }
+           
            
             
             
