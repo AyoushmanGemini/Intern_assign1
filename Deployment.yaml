@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-react-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-react-app
+  template:
+    metadata:
+      labels
+        app: my-app
+    spec:
+      containers:
+      - name: my-react-app
+        image: 127.0.1.1:8082/react-pro:latest
+        ports:
+        - containerPort: 80888   
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-react-service
+spec:
+  selector:
+    app: my-app
+  type: NodePort
+  ports:
+  - protocol: TCP
+    port: 5000
+    targetPort: 80
+    nodePort: 31110
