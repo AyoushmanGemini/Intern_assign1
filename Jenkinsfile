@@ -1,20 +1,33 @@
 node {
+    def imgName= "reactpro"
+    def dockerImage = ''
     stage("init") {
-        echo "building the application"
+        echo "starting the pipeline"
     }
 
-    stage("build") {
-        echo "building the application 2"
+    stage("cloning into git"){
         git branch: 'main', url: 'https://github.com/AyoushmanGemini/Intern_assign1.git'
-        sh 'docker build -t 127.0.1.1:8082/react-pro:${BUILD_NUMBER} .'
+    }
+
+    stage('Building image'){
+          echo "building the application 2"
+        dockerImage = docker.build(imgName)
+    }
+
+    stage("login") {
+      
+        
+        
         echo "docker build successful"
         
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]) {
             sh " docker login -u admin -p admin123 http://localhost:8082/"
             echo "Login successful"
-            // sh "docker tag react-pro 192.168.36.109:8082/react-pro:${BUILD_NUMBER}"
+           
             
-            sh "docker push 192.168.36.109:8082/react-pro:${BUILD_NUMBER}"
+            
         }
+                         sh "docker tag ${imgName}:latest 192.168.36.109:8082/${imgName}:latest"
+                                                                            sh "docker push 192.168.36.109:8082/${imgName}:latest"
     }
 }
