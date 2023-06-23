@@ -32,10 +32,8 @@
         
 withKubeConfig([credentialsId: 'mukube-config']) {
  echo "logging  in k8s success"
-sh 'kubectl create secret generic react-app-secret --from-file=nexus-credentials.txt'
-
-
-          sh 'kubectl apply -f Deployment.yaml'
+ sh 'kubectl create Secret.yaml'
+ sh 'kubectl apply -f Deployment.yaml'
         }
     }
 }
