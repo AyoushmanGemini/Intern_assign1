@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: nginx-deployment
+  name: react-pro
   labels:
-    app: nginx
+    app: react-pro-app
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: nginx
+      app: react-pro-app
   template:
     metadata:
       labels:
-        app: nginx
+        app: react-pro-app
     spec:
       containers:
-      - name: nginx
-        image: nginx:1.14.2
+      - name: react-pro
+        image: 127.0.1.1:8082/react-pro:latest
         ports:
         - containerPort: 80
