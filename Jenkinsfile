@@ -32,6 +32,9 @@
         // withKubeConfig([credentialsId: 'mukube-config']) {
         //     sh 'kubectl apply -f Deployment.yaml'
         // }
+
+     sh "kubectl --kubeconfig=/home/zeys/.kube/config get pods"
+     sh "kubectl --kubeconfig=/home/zeys/.kube/config apply -f Deployment.yaml"
     }
 }
            
