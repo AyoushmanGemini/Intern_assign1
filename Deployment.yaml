@@ -1,21 +1,34 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: react-pro
-  labels:
-    app: react-pro-app
+  name: react-pro-dep
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
-      app: react-pro-app
+      app: react-pro
   template:
     metadata:
       labels:
-        app: react-pro-app
+        app: react-pro
     spec:
       containers:
-      - name: react-pro
-        image: 127.0.1.1:8082/react-pro:latest
-        ports:
-        - containerPort: 80
+        - name: react-pro
+          image: 127.0.1.1:8082/react-pro:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          env:
+            - name: NEXUS_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: react-app-secret
+                  key: username
+            - name: NEXUS_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: react-app-secret
+                  key: password
+      imagePullSecrets:
+        - name: react-app-secret
+
