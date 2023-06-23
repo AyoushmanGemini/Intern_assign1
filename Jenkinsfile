@@ -24,14 +24,12 @@
 
     stage("Push image") {
         echo "Pushing image to the Nexus repository"
-        sh "docker push 127.0.1.1:8082/react-pro:latest"https://github.com/AyoushmanGemini/Intern_assign1/blob/main/Jenkinsfile
+        sh "docker push 127.0.1.1:8082/react-pro:latest"
         echo "Image pushed successfully!"
     }
 
     stage('Deploying to Kubernetes') {
-        // withKubeConfig([credentialsId: 'mukube-config']) {
-        //     sh 'kubectl apply -f Deployment.yaml'
-        // }
+        
 withKubeConfig([credentialsId: 'mukube-config']) {
  echo "logging  in k8s success"
           sh 'kubectl apply -f Deployment.yaml'
