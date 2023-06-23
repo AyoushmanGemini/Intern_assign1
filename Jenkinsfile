@@ -32,7 +32,7 @@
         
 withKubeConfig([credentialsId: 'mukube-config']) {
  echo "logging  in k8s success"
- sh 'kubectl create Secret.yaml'
+ sh 'kubectl apply -f Secret.yaml'
  sh 'kubectl apply -f Deployment.yaml'
         }
     }
