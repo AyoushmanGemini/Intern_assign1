@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: react-pro
-          image: 127.0.1.1:8082/react-pro:latest
+          image: 127.0.1.1:8081/repository/ReactDockerHost/
           imagePullPolicy: Always
           ports:
             - containerPort: 8080
