@@ -17,7 +17,7 @@
 
     stage("Login") {
         withCredentials([usernamePassword(credentialsId: 'nexus', passwordVariable: 'PSW', usernameVariable: 'USER')]) {
-            sh  docker login -u admin              -p admin123 127.0.1.1:8082"
+           sh "echo ${PSW} | docker login -u ${USER} --password-stdin 127.0.1.1:8082"
             echo "Login successful"
         }
     }
